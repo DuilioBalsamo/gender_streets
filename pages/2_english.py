@@ -70,8 +70,16 @@ def download_from_osm(city):
 def download_streets_and_infer_gender(city, language, default_cities=default_cities):
     if city is None:
         return []
-    streets = load_from_disk(city) if city in default_cities else download_from_osm(city)
-    
+    if city in default_cities:
+        streets = load_from_disk(city)
+    else:
+        try:
+            streets = download_from_osm(city)
+        except:
+            st.write(":red[**An error occurre, please try another city**]")
+            st.session_state.proceed = False
+            return gpd.GeoDataFrame()
+        
     unique_streets_df = pd.DataFrame(streets.name.astype(str).unique(), columns=['name'])
     if language == 'English':
         unique_streets_df['name_strip'] = unique_streets_df.name.str.split().str[:-1] 
@@ -187,7 +195,8 @@ The code is available on this [Git](https://github.com/DuilioBalsamo/gender_stre
 """)
     if city !=None:
         streets = download_streets_and_infer_gender(city,language)    
-
+        if len(streets)<1:
+            st.session_state.proceed = False
     if st.button('Go!', type="primary"):
         st.session_state.proceed = True
 
