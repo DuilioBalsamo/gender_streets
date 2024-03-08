@@ -122,7 +122,7 @@ def app():
         st.session_state['map'] = False
 
     st.title('Strade di genere\n')
-    st.header("Quante vie *nella tua città* sono intitolate a :violet[*donne*] ? E quante a  :green[*uomimi*]?",divider='rainbow')
+    st.header("Quante vie *nella tua città* sono intitolate a :violet[*donne*] ? E quante a  :green[*uomini*]?",divider='rainbow')
     st.markdown("""
 ##### Ciao! 👋 
 ##### Avrai notato che alcune strade nelle nostre città sono dedicate a *luoghi* o *eventi storici*. 
