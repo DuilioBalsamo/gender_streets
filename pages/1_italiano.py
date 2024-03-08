@@ -181,11 +181,12 @@ Il codice è disponibile su questo [Git](https://github.com/DuilioBalsamo/gender
 
 """)
     
-    streets = download_streets_and_infer_gender(city,language)
 
     
     if st.button('Via!', type="primary"):
         st.session_state.proceed = True
+        streets = download_streets_and_infer_gender(city,language)
+
         # st.write(st.session_state.proceed)
 
     if st.session_state.proceed:

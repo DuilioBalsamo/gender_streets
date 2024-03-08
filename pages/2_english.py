@@ -180,11 +180,12 @@ The code is available on this [Git](https://github.com/DuilioBalsamo/gender_stre
 
 """)
     
-    streets = download_streets_and_infer_gender(city, language)
 
     
     if st.button('Go!', type="primary"):
         st.session_state.proceed = True
+        streets = download_streets_and_infer_gender(city, language)
+
 
     if st.session_state.proceed:
         st.subheader(f'{city}')
