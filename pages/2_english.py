@@ -17,7 +17,7 @@ st.set_page_config(page_title="Gender Streets",
                    layout="wide"
                   )
 # Pre-defined list of cities for the app
-default_cities = ['Susa', 'Collegno', "Aosta", "Torino", "Genova", "Milano", "Trento", "Venezia", "Trieste",
+default_cities = ["Torino", "Aosta", "Genova", "Milano", "Trento", "Venezia", "Trieste",
                   "Bologna", "Firenze", "Ancona", "Perugia", "Roma", "L'Aquila", "Campobasso", "Napoli", "Bari",
                   "Potenza", "Catanzaro", "Palermo", "Cagliari"]
 
@@ -106,9 +106,7 @@ def plot_graphto_folium(gdf_edges, graph_map=None, popup_attribute=None, tiles=N
 
 
 def app():
-    
-    st.write("English")
-    
+        
     if st.button('Change Language/Cambia Lingua 🇮🇹'):
         # main.app()
         switch_page('italiano')
@@ -126,7 +124,7 @@ def app():
 ##### You might have noticed that some streets in our cities are dedicated to *places* or *historical events*. 
 ##### Other streets, however, are named after :rainbow[**people**].
 ##### Have you ever wondered if these streets commemorate :violet[*women*] or :green[*men*] and why?
-##### This simple *interactive web page* graphically shows if there's a gender disparity in the toponymy of your favorite city!🧐 
+##### This *interactive web page* shows in simple terms if there's a gender disparity in the toponymy of your favorite city!🧐 
 ##### :rainbow[**[SPOILER]**] *There is.*
 
 
@@ -136,7 +134,9 @@ def app():
     st.markdown("""
     ###### It's very simple, you just need to choose a *city* and a *language*.
     
-    You can also select *Other* to search for a city not on the list! (please be patient in this case, downloading data for large cities might take at least a minute)
+    You can also select *Other* to search for a city not on the list! 
+    
+    (Please be patient in this case, downloading data for large cities might take a couple of minutes.)
     """)
 
     options = default_cities + ['Other']

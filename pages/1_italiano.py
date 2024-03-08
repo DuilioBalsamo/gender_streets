@@ -18,7 +18,7 @@ st.set_page_config(page_title="Strade di genere",
                   )
 
 # Pre-defined list of cities for the app
-default_cities = ['Susa', 'Collegno', "Aosta", "Torino", "Genova", "Milano", "Trento", "Venezia", "Trieste",
+default_cities = ["Torino", "Aosta", "Genova", "Milano", "Trento", "Venezia", "Trieste",
                   "Bologna", "Firenze", "Ancona", "Perugia", "Roma", "L'Aquila", "Campobasso", "Napoli", "Bari",
                   "Potenza", "Catanzaro", "Palermo", "Cagliari"]
 
@@ -107,9 +107,7 @@ def plot_graphto_folium(gdf_edges, graph_map=None, popup_attribute=None, tiles=N
 
 
 def app():
-    
-    st.write("Italiano")
-    
+        
     if st.button('Cambia Lingua/Change Language 🇬🇧'):
         # main.app()
         switch_page('english')
@@ -127,7 +125,7 @@ def app():
 ##### Avrai notato che alcune strade nelle nostre città sono dedicate a *luoghi* o *eventi storici*. 
 ##### Altre strade invece sono intitolate a :rainbow[**personə**].
 ##### Ti sei mai chiestə se queste vie commemorano :violet[*donne*] o :green[*uomini*] e perché?
-##### Questa semplice *pagina web interattiva* mostra in maniera grafica se c'è disparità di genere nella toponomastica della tua città preferita!🧐 
+##### Questa *pagina web interattiva* mostra in maniera semplice se c'è *disparità di genere nella toponomastica* della tua città preferita!🧐 
 ##### :rainbow[**[SPOILER]**] *C'è.*
 
 
@@ -135,9 +133,11 @@ def app():
     st.text("")
 
     st.markdown("""
-    ###### È molto semplice, ti basta scegliere una *città* e una *lingua*.
+    ###### È tutto molto semplice, ti basta scegliere una *città* e una *lingua*.
     
-    Puoi anche selezionare *Other* per cercare una città non presente nella lista! (abbi pazienza in questo caso, scaricare i dati di città grosse potrebbe prendere un minuto almeno)
+    Puoi anche selezionare *Other* per cercare una città non presente nella lista! 
+    
+    (Per  scaricare i dati di città grosse, toccherà attendere un paio di minuti porta pazienza.)
     """)
 
     options =  default_cities +['Other']
