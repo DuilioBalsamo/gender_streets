@@ -1,0 +1,10 @@
+streamlit
+osmnx
+pandas
+folium
+streamlit-folium
+shapely
+geopandas
+spacy
+gender-guesser
+streamlit-extras
