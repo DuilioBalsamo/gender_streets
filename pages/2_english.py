@@ -176,7 +176,7 @@ Here's how it proceeds:
 
 **[DISCLAIMER]** This application was originally designed to work with Italian names, much less effort was put to make English and French work, so the results might be even less reliable 🙈
 
-The code is available on this [Git](), have fun!
+The code is available on this [Git](https://github.com/DuilioBalsamo/gender_streets), you can contribute if you want!
 
 """)
     

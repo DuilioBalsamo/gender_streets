@@ -177,7 +177,7 @@ Ecco come si procede:
 
 **[DISCLAIMER]** Questa applicazione è stata pensata orginariamente per funzionare con nomi italiani, molto meno sforzo è stato messo per far funzionare Inglese e Francese, quindi i risultati potrebbero essere ancora meno attendibili 🙈
 
-Il codice è disponibile su questo [Git](), buon divertimento!
+Il codice è disponibile su questo [Git](https://github.com/DuilioBalsamo/gender_streets), puoi contribuire se ti interessa!
 
 """)
     
