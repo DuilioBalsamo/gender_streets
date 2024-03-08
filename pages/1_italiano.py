@@ -18,7 +18,7 @@ st.set_page_config(page_title="Strade di genere",
                   )
 
 # Pre-defined list of cities for the app
-default_cities = ["Torino", "Aosta", "Genova", "Milano", "Trento", "Venezia", "Trieste",
+default_cities = [ "Aosta","Torino", "Genova", "Milano", "Trento", "Venezia", "Trieste",
                   "Bologna", "Firenze", "Ancona", "Perugia", "Roma", "L'Aquila", "Campobasso", "Napoli", "Bari",
                   "Potenza", "Catanzaro", "Palermo", "Cagliari"]
 
@@ -74,7 +74,10 @@ def download_streets_and_infer_gender(city, language, default_cities=default_cit
     streets = load_from_disk(city) if city in default_cities else download_from_osm(city)
     
     unique_streets_df = pd.DataFrame(streets.name.astype(str).unique(), columns=['name'])
-    unique_streets_df['name_strip'] = unique_streets_df.name.str.split().str[:-1] if language == 'Inglese' else unique_streets_df.name.str.split().str[1:]
+    if language == 'Inglese':
+        unique_streets_df['name_strip'] = unique_streets_df.name.str.split().str[:-1] 
+    else:
+        unique_streets_df['name_strip'] =unique_streets_df.name.str.split().str[1:]
     unique_streets_df['gender'] = unique_streets_df.name_strip.map(lambda x: get_gender(x, language=language, d=d))
     unique_streets_df.set_index('name', inplace=True)
 
@@ -148,12 +151,16 @@ def app():
         if selected_option == 'Other':
             # Ask for a free field input
             city = None
+            st.session_state.proceed = False
             other_input = st.text_input("Specifica quale città:")
             if other_input:  # Optional: Do something with the input
                 city = other_input
+                st.session_state.proceed = True
+
         else:
             # Optional: Do something with the selected option
             city = selected_option
+            
     with col2:
         language = st.selectbox('Scegli una lingua:', ['Italiano', 'Francese', 'Inglese'])
         nlp,d = load_nlp(language)
@@ -180,12 +187,12 @@ Ecco come si procede:
 Il codice è disponibile su questo [Git](https://github.com/DuilioBalsamo/gender_streets), puoi contribuire se ti interessa!
 
 """)
-    
-
+    if city !=None:
+        streets = download_streets_and_infer_gender(city,language)
     
     if st.button('Via!', type="primary"):
         st.session_state.proceed = True
-        streets = download_streets_and_infer_gender(city,language)
+        
 
         # st.write(st.session_state.proceed)
 
